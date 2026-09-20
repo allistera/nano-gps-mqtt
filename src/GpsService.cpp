@@ -7,6 +7,7 @@ void GpsService::poll(Stream &stream, std::uint32_t) {
     const int value = stream.read();
     if (value >= 0) {
       gps_.encode(static_cast<char>(value));
+      ++bytesReceived_;
     }
   }
 
