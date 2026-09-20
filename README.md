@@ -32,15 +32,15 @@ the device in production.
 
 ## Build and upload
 
-The first build compiles Arduino's pinned `ctags` tool locally because Arduino
-does not publish a macOS ARM binary for that required version. This avoids a
-system-wide Rosetta dependency.
+The first build and upload compile Arduino's pinned `ctags` and patched
+`dfu-util` tools locally because Arduino does not publish macOS ARM binaries for
+those required versions. This avoids a system-wide Rosetta dependency. Building
+the tools requires Homebrew `autoconf`, `automake`, `pkgconf`, and `libusb`.
 
 ```sh
 sh scripts/check-toolchain.sh
 sh scripts/lint.sh
 sh scripts/compile.sh
-arduino-cli upload -p /dev/cu.usbmodem1101 \
-  --fqbn esp32:esp32:nano_nora examples/NanoGpsMqtt
+sh scripts/upload.sh
 arduino-cli monitor -p /dev/cu.usbmodem1101 --config baudrate=115200
 ```
