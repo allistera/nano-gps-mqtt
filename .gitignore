@@ -1,1 +1,3 @@
 .worktrees/
+examples/NanoGpsMqtt/secrets.h
+build/
