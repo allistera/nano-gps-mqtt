@@ -26,9 +26,10 @@ Create the ignored local credentials file and populate it locally:
 cp examples/NanoGpsMqtt/secrets.example.h examples/NanoGpsMqtt/secrets.h
 ```
 
-Never commit or print `secrets.h`. The prototype uses authenticated, unencrypted
-MQTT on port 1883. Move the broker and firmware to TLS on port 8883 before using
-the device in production.
+Any file named `secrets.h` is ignored repository-wide, and lint/CI rejects one
+if it is force-added. Never commit or print it. The prototype uses authenticated,
+unencrypted MQTT on port 1883. Move the broker and firmware to TLS on port 8883
+before using the device in production.
 
 ## Build and upload
 

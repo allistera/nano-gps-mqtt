@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint
+        run: sh scripts/lint.sh
+      - name: Test secret-file guard
+        run: sh tests/check-no-secrets-test.sh
+      - name: Run native tests
+        run: sh scripts/test-native.sh
